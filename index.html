@@ -1,1 +1,369 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyHub | منصة دراستي</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- الشريط العلوي -->
+    <header class="navbar">
+
+        <div class="logo">
+            📚 StudyHub
+        </div>
+
+        <nav>
+            <a href="#home" class="active">الرئيسية</a>
+            <a href="#subjects">المواد</a>
+            <a href="#tasks">المهام</a>
+            <a href="#timer">المؤقت</a>
+            <a href="#progress">تقدمي</a>
+        </nav>
+
+        <button id="themeButton" class="theme-button">
+            🌙
+        </button>
+
+    </header>
+
+
+    <!-- الصفحة الرئيسية -->
+    <main>
+
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <span class="welcome">
+                    👋 مرحبًا بك في StudyHub
+                </span>
+
+                <h1>
+                    نظّم دراستك،<br>
+                    وحقق أهدافك 🎯
+                </h1>
+
+                <p>
+                    مكانك الخاص لتنظيم المواد والواجبات
+                    ومتابعة تقدمك الدراسي.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#subjects" class="primary-button">
+                        📚 ابدأ الدراسة
+                    </a>
+
+                    <a href="#tasks" class="secondary-button">
+                        ✅ مهامي
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="hero-card">
+
+                <div class="card-icon">
+                    🚀
+                </div>
+
+                <h3>هدف اليوم</h3>
+
+                <p>
+                    أنجز مهامك الدراسية اليوم
+                </p>
+
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+
+                <span class="progress-text">
+                    0% مكتمل
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- الإحصائيات -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <span>📚</span>
+                <strong id="subjectsCount">0</strong>
+                <p>المواد</p>
+            </div>
+
+            <div class="stat-card">
+                <span>✅</span>
+                <strong id="tasksCount">0</strong>
+                <p>المهام</p>
+            </div>
+
+            <div class="stat-card">
+                <span>⏱️</span>
+                <strong id="studyTime">0</strong>
+                <p>دقائق الدراسة</p>
+            </div>
+
+            <div class="stat-card">
+                <span>🎯</span>
+                <strong id="goalsCount">0</strong>
+                <p>الأهداف</p>
+            </div>
+
+        </section>
+
+
+        <!-- المواد -->
+        <section id="subjects" class="section">
+
+            <div class="section-title">
+
+                <div>
+                    <span class="section-label">📚 تنظيم الدراسة</span>
+
+                    <h2>المواد الدراسية</h2>
+
+                    <p>
+                        اختر المادة التي تريد الدراسة فيها.
+                    </p>
+                </div>
+
+                <button class="add-button" onclick="addSubject()">
+                    ＋ إضافة مادة
+                </button>
+
+            </div>
+
+
+            <div id="subjectsContainer" class="subjects-grid">
+
+                <div class="subject-card mathematics">
+                    <div class="subject-icon">📐</div>
+                    <h3>الرياضيات</h3>
+                    <p>الدروس والتمارين</p>
+                    <button onclick="openSubject('الرياضيات')">
+                        فتح المادة →
+                    </button>
+                </div>
+
+                <div class="subject-card arabic">
+                    <div class="subject-icon">📖</div>
+                    <h3>اللغة العربية</h3>
+                    <p>القواعد والنصوص</p>
+                    <button onclick="openSubject('اللغة العربية')">
+                        فتح المادة →
+                    </button>
+                </div>
+
+                <div class="subject-card french">
+                    <div class="subject-icon">🇫🇷</div>
+                    <h3>الفرنسية</h3>
+                    <p>Vocabulaire & Grammaire</p>
+                    <button onclick="openSubject('الفرنسية')">
+                        فتح المادة →
+                    </button>
+                </div>
+
+                <div class="subject-card english">
+                    <div class="subject-icon">🇬🇧</div>
+                    <h3>الإنجليزية</h3>
+                    <p>Vocabulary & Grammar</p>
+                    <button onclick="openSubject('الإنجليزية')">
+                        فتح المادة →
+                    </button>
+                </div>
+
+                <div class="subject-card science">
+                    <div class="subject-icon">🔬</div>
+                    <h3>العلوم</h3>
+                    <p>الدروس والتجارب</p>
+                    <button onclick="openSubject('العلوم')">
+                        فتح المادة →
+                    </button>
+                </div>
+
+                <div class="subject-card physics">
+                    <div class="subject-icon">⚡</div>
+                    <h3>الفيزياء</h3>
+                    <p>القوانين والتمارين</p>
+                    <button onclick="openSubject('الفيزياء')">
+                        فتح المادة →
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- المهام -->
+        <section id="tasks" class="section tasks-section">
+
+            <div class="section-title">
+
+                <div>
+                    <span class="section-label">✅ تنظيم الوقت</span>
+
+                    <h2>مهامي الدراسية</h2>
+
+                    <p>
+                        تابع الواجبات والمهام التي يجب عليك إنجازها.
+                    </p>
+                </div>
+
+                <button class="add-button" onclick="addTask()">
+                    ＋ إضافة مهمة
+                </button>
+
+            </div>
+
+
+            <div id="tasksContainer" class="tasks-container">
+
+                <div class="empty-state">
+
+                    <div>📝</div>
+
+                    <h3>لا توجد مهام بعد</h3>
+
+                    <p>
+                        أضف أول مهمة دراسية لك.
+                    </p>
+
+                    <button onclick="addTask()">
+                        إضافة مهمة
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- المؤقت -->
+        <section id="timer" class="timer-section">
+
+            <div class="timer-content">
+
+                <span class="section-label">
+                    ⏱️ التركيز
+                </span>
+
+                <h2>
+                    مؤقت الدراسة
+                </h2>
+
+                <p>
+                    ركز في دراستك واترك الباقي على StudyHub.
+                </p>
+
+                <div id="timerDisplay" class="timer-display">
+                    25:00
+                </div>
+
+                <div class="timer-buttons">
+
+                    <button onclick="startTimer()" class="primary-button">
+                        ▶ بدء
+                    </button>
+
+                    <button onclick="pauseTimer()" class="secondary-button">
+                        ⏸ إيقاف
+                    </button>
+
+                    <button onclick="resetTimer()" class="secondary-button">
+                        ↻ إعادة
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- التقدم -->
+        <section id="progress" class="section">
+
+            <div class="section-title">
+
+                <div>
+                    <span class="section-label">
+                        📊 إنجازك
+                    </span>
+
+                    <h2>
+                        تقدمي الدراسي
+                    </h2>
+
+                    <p>
+                        شاهد تطورك في الدراسة.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="progress-card">
+
+                <div class="progress-header">
+
+                    <div>
+                        <h3>تقدمك اليوم</h3>
+                        <p>استمر! كل خطوة تقربك من هدفك 💪</p>
+                    </div>
+
+                    <strong id="progressPercent">
+                        0%
+                    </strong>
+
+                </div>
+
+                <div class="large-progress-bar">
+                    <div
+                        id="largeProgressFill"
+                        class="large-progress-fill">
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- التذييل -->
+    <footer>
+
+        <div class="footer-logo">
+            📚 StudyHub
+        </div>
+
+        <p>
+            منصتك الشخصية لتنظيم الدراسة وتحقيق أهدافك.
+        </p>
+
+        <span>
+            © 2026 StudyHub
+        </span>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
 
