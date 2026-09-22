@@ -16,19 +16,51 @@
 
     <style>
 
+        .subject-page {
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 50px 0 80px;
+        }
+
         .subject-header {
-            width: min(1180px, 90%);
-            margin: 0 auto;
-            padding: 70px 0 40px;
+            padding: 40px;
+            margin-bottom: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(79, 140, 255, 0.15),
+                    rgba(124, 92, 255, 0.08)
+                ),
+                var(--card);
+
+            border: 1px solid var(--border);
+            border-radius: 25px;
+
+            text-align: center;
+        }
+
+        .subject-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .subject-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 10px;
+        }
+
+        .subject-header p {
+            color: var(--text-muted);
         }
 
         .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            display: inline-block;
             margin-bottom: 25px;
+
             color: #93c5fd;
             text-decoration: none;
+
             font-weight: 700;
         }
 
@@ -36,170 +68,121 @@
             color: white;
         }
 
-        .subject-title {
-            padding: 35px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(79, 140, 255, 0.14),
-                    rgba(124, 92, 255, 0.08)
-                ),
-                var(--card);
-
-            border: 1px solid var(--border);
-            border-radius: 25px;
-        }
-
-        .subject-title-icon {
-            width: 70px;
-            height: 70px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            margin-bottom: 20px;
-
-            background: rgba(79, 140, 255, 0.12);
-
-            border-radius: 20px;
-
-            font-size: 2.2rem;
-        }
-
-        .subject-title h1 {
-            margin-bottom: 8px;
-            font-size: clamp(2rem, 5vw, 3.2rem);
-        }
-
-        .subject-title p {
-            color: var(--text-muted);
-        }
-
-        .lessons-section {
-            width: min(1180px, 90%);
-            margin: 0 auto;
-            padding: 30px 0 80px;
-        }
-
         .unit {
-            margin-bottom: 25px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            overflow: hidden;
+            margin-bottom: 35px;
         }
 
-        .unit-header {
-            padding: 22px 25px;
-            background: rgba(79, 140, 255, 0.07);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .unit-header h2 {
-            margin-bottom: 4px;
-            font-size: 1.3rem;
-        }
-
-        .unit-header p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .lesson-list {
-            padding: 10px;
-        }
-
-        .lesson {
+        .unit-title {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            padding: 18px;
-            border-radius: 14px;
+            gap: 12px;
 
-            transition:
-                background 0.2s ease,
-                transform 0.2s ease;
+            margin-bottom: 18px;
+
+            font-size: 1.5rem;
         }
 
-        .lesson:hover {
-            background: rgba(255, 255, 255, 0.04);
-            transform: translateX(-3px);
+        .lessons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
         }
 
-        .lesson-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .lesson-number {
-            width: 42px;
-            height: 42px;
-
-            flex-shrink: 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: rgba(79, 140, 255, 0.12);
-
-            color: #93c5fd;
-
-            border-radius: 12px;
-
-            font-weight: 800;
-        }
-
-        .lesson-info h3 {
-            margin-bottom: 3px;
-            font-size: 1rem;
-        }
-
-        .lesson-info p {
-            color: var(--text-muted);
-            font-size: 0.82rem;
-        }
-
-        .lesson-button {
-            padding: 9px 15px;
-
-            border: 1px solid rgba(79, 140, 255, 0.2);
-            border-radius: 10px;
-
-            background: rgba(79, 140, 255, 0.08);
-
-            color: #93c5fd;
-
-            text-decoration: none;
-
-            font-weight: 700;
-
-            white-space: nowrap;
-
-            transition: 0.2s ease;
-        }
-
-        .lesson-button:hover {
-            background: rgba(79, 140, 255, 0.17);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .subject-progress {
-            margin-top: 25px;
+        .lesson-card {
             padding: 25px;
 
             background: var(--card);
 
             border: 1px solid var(--border);
+            border-radius: 18px;
+
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-4px);
+            background: var(--card-hover);
+            border-color: var(--primary);
+        }
+
+        .lesson-number {
+            display: inline-flex;
+
+            width: 38px;
+            height: 38px;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 15px;
+
+            background: rgba(79, 140, 255, 0.15);
+
+            border-radius: 10px;
+
+            color: #93c5fd;
+
+            font-weight: 800;
+        }
+
+        .lesson-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .lesson-card p {
+            margin-bottom: 18px;
+
+            color: var(--text-muted);
+        }
+
+        .lesson-button {
+            display: inline-block;
+
+            padding: 10px 16px;
+
+            background: #4f8cff;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 9px;
+
+            font-weight: 700;
+        }
+
+        .lesson-button:hover {
+            opacity: 0.9;
+        }
+
+        .coming-soon {
+            display: inline-block;
+
+            padding: 8px 14px;
+
+            background: rgba(148, 163, 184, 0.12);
+
+            color: var(--text-muted);
+
+            border-radius: 8px;
+
+            font-size: 0.9rem;
+        }
+
+        .progress-card {
+            padding: 28px;
+            margin-top: 35px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
             border-radius: 20px;
         }
 
-        .subject-progress-header {
+        .progress-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -207,29 +190,38 @@
             margin-bottom: 15px;
         }
 
-        .subject-progress-header span {
-            color: var(--text-muted);
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+
+            background: var(--background-light);
+
+            border-radius: 20px;
+
+            overflow: hidden;
         }
 
-        .subject-progress-header strong {
-            color: #93c5fd;
-            font-size: 1.4rem;
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+
+            background: linear-gradient(
+                90deg,
+                #4f8cff,
+                #7c5cff
+            );
+
+            border-radius: 20px;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
 
-            .subject-title {
-                padding: 25px;
+            .subject-header {
+                padding: 28px 20px;
             }
 
-            .lesson {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-
-            .lesson-button {
-                width: 100%;
-                text-align: center;
+            .lessons {
+                grid-template-columns: 1fr;
             }
 
         }
@@ -259,21 +251,11 @@
             </a>
 
             <a
-                href="index.html#subjects"
+                href="math.html"
                 class="active">
-                المواد
-            </a>
 
-            <a href="index.html#tasks">
-                المهام
-            </a>
+                الرياضيات
 
-            <a href="index.html#timer">
-                المؤقت
-            </a>
-
-            <a href="index.html#progress">
-                تقدمي
             </a>
 
         </nav>
@@ -290,24 +272,25 @@
     </header>
 
 
-    <!-- =========================
-         رأس المادة
-         ========================= -->
+    <main class="subject-page">
 
-    <section class="subject-header">
+
+        <!-- العودة -->
 
         <a
-            href="index.html#subjects"
+            href="index.html"
             class="back-link">
 
-            ← العودة إلى المواد
+            ← العودة إلى الرئيسية
 
         </a>
 
 
-        <div class="subject-title">
+        <!-- رأس المادة -->
 
-            <div class="subject-title-icon">
+        <section class="subject-header">
+
+            <div class="subject-icon">
                 📐
             </div>
 
@@ -316,67 +299,41 @@
             </h1>
 
             <p>
-                السنة الأولى ثانوي — جذع مشترك
+                دروس وتمارين الرياضيات للسنة الأولى ثانوي
             </p>
 
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         الدروس
-         ========================= -->
-
-    <main class="lessons-section">
+        </section>
 
 
         <!-- =========================
              الوحدة الأولى
              ========================= -->
 
-        <div class="unit">
+        <section class="unit">
 
-            <div class="unit-header">
-
-                <h2>
-                    📘 الوحدة الأولى
-                </h2>
-
-                <p>
-                    الأعداد والحساب
-                </p>
-
-            </div>
+            <h2 class="unit-title">
+                📘 الوحدة الأولى
+            </h2>
 
 
-            <div class="lesson-list">
+            <div class="lessons">
 
 
-                <!-- الدرس 01 -->
+                <!-- الدرس 1 -->
 
-                <div class="lesson">
+                <article class="lesson-card">
 
-                    <div class="lesson-info">
-
-                        <div class="lesson-number">
-                            01
-                        </div>
-
-                        <div>
-
-                            <h3>
-                                مجموعات الأعداد
-                            </h3>
-
-                            <p>
-                                التعرف على مختلف مجموعات الأعداد
-                            </p>
-
-                        </div>
-
+                    <div class="lesson-number">
+                        1
                     </div>
 
+                    <h3>
+                        مجموعات الأعداد
+                    </h3>
+
+                    <p>
+                        التعرف على مجموعات الأعداد والعلاقات بينها.
+                    </p>
 
                     <a
                         href="math-lesson-1.html"
@@ -386,33 +343,24 @@
 
                     </a>
 
-                </div>
+                </article>
 
 
-                <!-- الدرس 02 -->
+                <!-- الدرس 2 -->
 
-                <div class="lesson">
+                <article class="lesson-card">
 
-                    <div class="lesson-info">
-
-                        <div class="lesson-number">
-                            02
-                        </div>
-
-                        <div>
-
-                            <h3>
-                                المجالات
-                            </h3>
-
-                            <p>
-                                تمثيل المجالات وكتابتها
-                            </p>
-
-                        </div>
-
+                    <div class="lesson-number">
+                        2
                     </div>
 
+                    <h3>
+                        المجالات
+                    </h3>
+
+                    <p>
+                        فهم المجالات وكتابتها وتمثيلها على مستقيم الأعداد.
+                    </p>
 
                     <a
                         href="math-lesson-2.html"
@@ -422,313 +370,229 @@
 
                     </a>
 
-                </div>
+                </article>
 
 
-                <!-- الدرس 03 -->
+                <!-- الدرس 3 -->
 
-                <div class="lesson">
+                <article class="lesson-card">
 
-                    <div class="lesson-info">
-
-                        <div class="lesson-number">
-                            03
-                        </div>
-
-                        <div>
-
-                            <h3>
-                                القيمة المطلقة
-                            </h3>
-
-                            <p>
-                                تعريف القيمة المطلقة وخصائصها
-                            </p>
-
-                        </div>
-
+                    <div class="lesson-number">
+                        3
                     </div>
 
+                    <h3>
+                        القيمة المطلقة
+                    </h3>
+
+                    <p>
+                        فهم القيمة المطلقة وحسابها وحل المعادلات البسيطة.
+                    </p>
 
                     <a
-                        href="#"
+                        href="math-lesson-3.html"
                         class="lesson-button">
 
                         فتح الدرس →
 
                     </a>
 
-                </div>
+                </article>
 
 
             </div>
 
-        </div>
+        </section>
 
 
         <!-- =========================
              الوحدة الثانية
              ========================= -->
 
-        <div class="unit">
+        <section class="unit">
 
-            <div class="unit-header">
-
-                <h2>
-                    📗 الوحدة الثانية
-                </h2>
-
-                <p>
-                    الحساب الجبري
-                </p>
-
-            </div>
+            <h2 class="unit-title">
+                📗 الوحدة الثانية
+            </h2>
 
 
-            <div class="lesson-list">
+            <div class="lessons">
 
 
-                <div class="lesson">
+                <!-- الدرس 4 -->
 
-                    <div class="lesson-info">
+                <article class="lesson-card">
 
-                        <div class="lesson-number">
-                            04
-                        </div>
-
-                        <div>
-
-                            <h3>
-                                النشر والتحليل
-                            </h3>
-
-                            <p>
-                                قواعد النشر والتحليل والتطبيقات
-                            </p>
-
-                        </div>
-
+                    <div class="lesson-number">
+                        4
                     </div>
 
+                    <h3>
+                        النشر والتحليل
+                    </h3>
 
-                    <a
-                        href="#"
-                        class="lesson-button">
+                    <p>
+                        تعلم كيفية نشر وتحليل العبارات الجبرية.
+                    </p>
 
-                        فتح الدرس →
+                    <span class="coming-soon">
+                        قريبًا
+                    </span>
 
-                    </a>
-
-                </div>
+                </article>
 
 
-                <div class="lesson">
+                <!-- الدرس 5 -->
 
-                    <div class="lesson-info">
+                <article class="lesson-card">
 
-                        <div class="lesson-number">
-                            05
-                        </div>
-
-                        <div>
-
-                            <h3>
-                                المتطابقات الشهيرة
-                            </h3>
-
-                            <p>
-                                استعمال المتطابقات في تبسيط العبارات
-                            </p>
-
-                        </div>
-
+                    <div class="lesson-number">
+                        5
                     </div>
 
+                    <h3>
+                        المتطابقات الشهيرة
+                    </h3>
 
-                    <a
-                        href="#"
-                        class="lesson-button">
+                    <p>
+                        دراسة أهم المتطابقات الشهيرة وتطبيقاتها.
+                    </p>
 
-                        فتح الدرس →
+                    <span class="coming-soon">
+                        قريبًا
+                    </span>
 
-                    </a>
-
-                </div>
+                </article>
 
 
-                <div class="lesson">
+                <!-- الدرس 6 -->
 
-                    <div class="lesson-info">
+                <article class="lesson-card">
 
-                        <div class="lesson-number">
-                            06
-                        </div>
-
-                        <div>
-
-                            <h3>
-                                المعادلات
-                            </h3>
-
-                            <p>
-                                حل المعادلات من الدرجة الأولى
-                            </p>
-
-                        </div>
-
+                    <div class="lesson-number">
+                        6
                     </div>
 
+                    <h3>
+                        المعادلات
+                    </h3>
 
-                    <a
-                        href="#"
-                        class="lesson-button">
+                    <p>
+                        حل المعادلات الجبرية والتعرف على طرق حلها.
+                    </p>
 
-                        فتح الدرس →
+                    <span class="coming-soon">
+                        قريبًا
+                    </span>
 
-                    </a>
-
-                </div>
+                </article>
 
 
             </div>
 
-        </div>
+        </section>
 
 
         <!-- =========================
              الوحدة الثالثة
              ========================= -->
 
-        <div class="unit">
+        <section class="unit">
 
-            <div class="unit-header">
-
-                <h2>
-                    📙 الوحدة الثالثة
-                </h2>
-
-                <p>
-                    الدوال
-                </p>
-
-            </div>
+            <h2 class="unit-title">
+                📕 الوحدة الثالثة
+            </h2>
 
 
-            <div class="lesson-list">
+            <div class="lessons">
 
 
-                <div class="lesson">
+                <!-- الدرس 7 -->
 
-                    <div class="lesson-info">
+                <article class="lesson-card">
 
-                        <div class="lesson-number">
-                            07
-                        </div>
-
-                        <div>
-
-                            <h3>
-                                مفهوم الدالة
-                            </h3>
-
-                            <p>
-                                تعريف الدالة وتمثيلها
-                            </p>
-
-                        </div>
-
+                    <div class="lesson-number">
+                        7
                     </div>
 
+                    <h3>
+                        مفهوم الدالة
+                    </h3>
 
-                    <a
-                        href="#"
-                        class="lesson-button">
+                    <p>
+                        مقدمة إلى مفهوم الدالة وكيفية تمثيلها.
+                    </p>
 
-                        فتح الدرس →
+                    <span class="coming-soon">
+                        قريبًا
+                    </span>
 
-                    </a>
-
-                </div>
+                </article>
 
 
-                <div class="lesson">
+                <!-- الدرس 8 -->
 
-                    <div class="lesson-info">
+                <article class="lesson-card">
 
-                        <div class="lesson-number">
-                            08
-                        </div>
-
-                        <div>
-
-                            <h3>
-                                الدوال المرجعية
-                            </h3>
-
-                            <p>
-                                دراسة بعض الدوال الأساسية
-                            </p>
-
-                        </div>
-
+                    <div class="lesson-number">
+                        8
                     </div>
 
+                    <h3>
+                        الدوال المرجعية
+                    </h3>
 
-                    <a
-                        href="#"
-                        class="lesson-button">
+                    <p>
+                        دراسة الدوال المرجعية وتمثيلها البياني.
+                    </p>
 
-                        فتح الدرس →
+                    <span class="coming-soon">
+                        قريبًا
+                    </span>
 
-                    </a>
-
-                </div>
+                </article>
 
 
             </div>
 
-        </div>
+        </section>
 
 
         <!-- =========================
-             تقدم المادة
+             التقدم
              ========================= -->
 
-        <div class="subject-progress">
+        <section class="progress-card">
 
-            <div class="subject-progress-header">
+            <div class="progress-header">
 
-                <div>
-
-                    <strong>
-                        📊 تقدمك في الرياضيات
-                    </strong>
-
-                    <br>
-
-                    <span>
-                        أكمل الدروس لتطوير نسبة تقدمك.
-                    </span>
-
-                </div>
+                <h2>
+                    📊 تقدمك في الرياضيات
+                </h2>
 
                 <strong>
-                    0%
+                    37%
                 </strong>
 
             </div>
 
-
-            <div class="large-progress-bar">
+            <div class="progress-bar">
 
                 <div
-                    class="large-progress-fill"
-                    style="width: 0%;">
+                    class="progress-fill"
+                    style="width: 37%;">
+
                 </div>
 
             </div>
 
-        </div>
+            <p style="margin-top: 12px; color: var(--text-muted);">
+
+                أكملت 3 دروس من أصل 8 — استمر! 🚀
+
+            </p>
+
+        </section>
 
 
     </main>
@@ -754,10 +618,6 @@
 
     </footer>
 
-
-    <!-- =========================
-         JavaScript
-         ========================= -->
 
     <script>
 
@@ -817,3 +677,4 @@
 </body>
 
 </html>
+
