@@ -151,27 +151,81 @@
             line-height: 1.9;
         }
 
+
+        /* =========================
+           التمارين
+           ========================= */
+
         .exercise {
-            padding: 20px;
-            margin-top: 15px;
+            padding: 22px;
+            margin-top: 18px;
 
             background: #101820;
 
             border: 1px solid var(--border);
-            border-radius: 14px;
+            border-radius: 16px;
         }
 
-        .exercise p {
-            margin-bottom: 15px;
+        .exercise-number {
+            display: inline-flex;
+
+            width: 38px;
+            height: 38px;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 12px;
+
+            background: rgba(79, 140, 255, 0.15);
+
+            color: #93c5fd;
+
+            border-radius: 10px;
+
+            font-weight: 800;
         }
 
-        .answer-button {
-            padding: 10px 18px;
+        .question {
+            font-size: 1.1rem;
+            font-weight: 700;
+
+            margin-bottom: 18px;
+        }
+
+        .answer-input {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            background: #182631;
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            color: white;
+
+            font-size: 1rem;
+
+            outline: none;
+
+            box-sizing: border-box;
+        }
+
+        .answer-input:focus {
+            border-color: #4f8cff;
+        }
+
+        .check-button {
+            margin-top: 12px;
+
+            padding: 11px 20px;
+
+            background: #4f8cff;
 
             border: none;
             border-radius: 9px;
 
-            background: #4f8cff;
             color: white;
 
             cursor: pointer;
@@ -179,23 +233,54 @@
             font-weight: 700;
         }
 
-        .answer-button:hover {
+        .check-button:hover {
             opacity: 0.9;
         }
 
-        .answer {
+        .result {
             display: none;
 
             margin-top: 15px;
-            padding: 12px;
+            padding: 13px;
 
-            background: rgba(34, 197, 94, 0.1);
+            border-radius: 10px;
+
+            font-weight: 700;
+        }
+
+        .correct {
+            display: block;
+
+            background: rgba(34, 197, 94, 0.12);
 
             border-right: 4px solid #22c55e;
-            border-radius: 8px;
 
             color: #8ff0ad;
         }
+
+        .wrong {
+            display: block;
+
+            background: rgba(239, 68, 68, 0.12);
+
+            border-right: 4px solid #ef4444;
+
+            color: #ff8f8f;
+        }
+
+        .saved-status {
+            margin-top: 25px;
+            padding: 18px;
+
+            background: rgba(79, 140, 255, 0.08);
+
+            border-right: 4px solid #4f8cff;
+
+            border-radius: 10px;
+
+            color: var(--text-light);
+        }
+
 
         @media (max-width: 700px) {
 
@@ -257,8 +342,6 @@
     <main class="lesson-page">
 
 
-        <!-- العودة -->
-
         <a
             href="math.html"
             class="back-link">
@@ -310,16 +393,12 @@
             </div>
 
             <p>
-                مثال بسيط:
+                مثال:
             </p>
 
             <div class="math-box">
                 3(x + 2) = 3x + 6
             </div>
-
-            <p>
-                هنا قمنا بالنشر.
-            </p>
 
         </section>
 
@@ -333,17 +412,13 @@
             </h2>
 
             <p>
-                أهم قاعدة في النشر هي خاصية التوزيع:
+                عندما نريد نشر عبارة تحتوي على قوس،
+                نضرب العدد الموجود خارج القوس في كل حد داخله.
             </p>
 
             <div class="math-box">
                 a(b + c) = ab + ac
             </div>
-
-            <p>
-                أي أننا نضرب العدد الموجود خارج القوس
-                في كل حد داخل القوس.
-            </p>
 
             <div class="math-box">
                 a(b - c) = ab - ac
@@ -352,12 +427,12 @@
         </section>
 
 
-        <!-- أمثلة النشر -->
+        <!-- أمثلة -->
 
         <section class="lesson-card">
 
             <h2>
-                💡 أمثلة على النشر
+                💡 أمثلة
             </h2>
 
             <div class="examples">
@@ -376,10 +451,6 @@
                     <div class="math-box">
                         2(x + 3)
                     </div>
-
-                    <p>
-                        نضرب 2 في كل حد:
-                    </p>
 
                     <div class="math-box">
                         2x + 6
@@ -402,10 +473,6 @@
                         5(x - 2)
                     </div>
 
-                    <p>
-                        النتيجة:
-                    </p>
-
                     <div class="math-box">
                         5x - 10
                     </div>
@@ -420,19 +487,15 @@
                     </h3>
 
                     <p>
-                        انشر:
+                        حلّل:
                     </p>
 
                     <div class="math-box">
-                        -3(x + 4)
+                        3x + 6
                     </div>
 
-                    <p>
-                        النتيجة:
-                    </p>
-
                     <div class="math-box">
-                        -3x - 12
+                        3(x + 2)
                     </div>
 
                 </div>
@@ -449,19 +512,47 @@
                     </p>
 
                     <div class="math-box">
-                        4(2x - 3)
+                        (x + 2)(x + 3)
                     </div>
 
-                    <p>
-                        النتيجة:
-                    </p>
-
                     <div class="math-box">
-                        8x - 12
+                        x² + 5x + 6
                     </div>
 
                 </div>
 
+
+            </div>
+
+        </section>
+
+
+        <!-- التحليل -->
+
+        <section class="lesson-card">
+
+            <h2>
+                🔄 التحليل بالعامل المشترك
+            </h2>
+
+            <p>
+                لإجراء التحليل، نبحث عن العامل المشترك بين الحدود
+                ثم نضعه خارج القوس.
+            </p>
+
+            <div class="definition">
+
+                مثال:
+
+                <div class="math-box">
+                    4x + 12
+                </div>
+
+                العامل المشترك هو 4:
+
+                <div class="math-box">
+                    4x + 12 = 4(x + 3)
+                </div>
 
             </div>
 
@@ -477,20 +568,12 @@
             </h2>
 
             <p>
-                عندما يكون لدينا حاصل ضرب قوسين،
-                نضرب كل حد في القوس الأول في كل حد في القوس الثاني.
+                عند وجود قوسين، نضرب كل حد من القوس الأول
+                في كل حد من القوس الثاني.
             </p>
 
             <div class="math-box">
-                (a + b)(c + d)
-            </div>
-
-            <p>
-                نقوم بالنشر:
-            </p>
-
-            <div class="math-box">
-                ac + ad + bc + bd
+                (a + b)(c + d) = ac + ad + bc + bd
             </div>
 
             <div class="definition">
@@ -498,19 +581,13 @@
                 مثال:
 
                 <div class="math-box">
-                    (x + 2)(x + 3)
+                    (x + 2)(x + 5)
                 </div>
 
-                ننشر:
+                النتيجة:
 
                 <div class="math-box">
-                    x² + 3x + 2x + 6
-                </div>
-
-                ثم نجمع الحدود المتشابهة:
-
-                <div class="math-box">
-                    x² + 5x + 6
+                    x² + 7x + 10
                 </div>
 
             </div>
@@ -518,128 +595,27 @@
         </section>
 
 
-        <!-- التحليل -->
+        <!-- نصائح -->
 
         <section class="lesson-card">
 
             <h2>
-                🔄 التحليل
-            </h2>
-
-            <p>
-                التحليل هو عكس النشر.
-                نحاول استخراج عامل مشترك من الحدود.
-            </p>
-
-            <div class="definition">
-
-                مثال:
-
-                <div class="math-box">
-                    3x + 6
-                </div>
-
-                العامل المشترك هو 3، لذلك:
-
-                <div class="math-box">
-                    3x + 6 = 3(x + 2)
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- عامل مشترك -->
-
-        <section class="lesson-card">
-
-            <h2>
-                🎯 استخراج العامل المشترك
-            </h2>
-
-            <p>
-                لإجراء التحليل، ابحث أولًا عن العامل المشترك بين الحدود.
-            </p>
-
-            <div class="examples">
-
-
-                <div class="example">
-
-                    <h3>
-                        مثال 1
-                    </h3>
-
-                    <div class="math-box">
-                        5x + 15
-                    </div>
-
-                    <p>
-                        العامل المشترك هو 5:
-                    </p>
-
-                    <div class="math-box">
-                        5(x + 3)
-                    </div>
-
-                </div>
-
-
-                <div class="example">
-
-                    <h3>
-                        مثال 2
-                    </h3>
-
-                    <div class="math-box">
-                        4x² + 8x
-                    </div>
-
-                    <p>
-                        العامل المشترك هو 4x:
-                    </p>
-
-                    <div class="math-box">
-                        4x(x + 2)
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- طريقة العمل -->
-
-        <section class="lesson-card">
-
-            <h2>
-                ⭐ كيف أتعامل مع التمرين؟
+                ⭐ نصائح مهمة
             </h2>
 
             <div class="tip">
 
-                <strong>في النشر:</strong>
-
-                <br>
-
-                اضرب العامل الموجود خارج القوس في كل حد داخل القوس.
+                في النشر:
+                اضرب العامل في كل حد داخل القوس.
 
                 <br><br>
 
-                <strong>في التحليل:</strong>
-
-                <br>
-
-                ابحث عن العامل المشترك ثم أخرجه خارج القوس.
+                في التحليل:
+                ابحث عن العامل المشترك وأخرجه خارج القوس.
 
                 <br><br>
 
-                وأهم شيء:
-                انتبه جيدًا إلى الإشارات
+                انتبه دائمًا إلى إشارات
                 <strong>+</strong>
                 و
                 <strong>-</strong>.
@@ -649,160 +625,252 @@
         </section>
 
 
-        <!-- تمارين -->
+        <!-- =========================
+             التمارين الحقيقية
+             ========================= -->
 
         <section class="lesson-card">
 
             <h2>
-                📝 تمارين تفاعلية
+                📝 اختبر نفسك
             </h2>
 
+            <p>
+                اكتب إجابتك بنفسك ثم اضغط على
+                <strong>تحقق من الإجابة</strong>.
+            </p>
+
+
+            <!-- التمرين 1 -->
 
             <div class="exercise">
 
-                <p>
+                <div class="exercise-number">
+                    1
+                </div>
 
-                    <strong>
-                        التمرين 1:
-                    </strong>
+                <div class="question">
 
-                    انشر:
+                    انشر العبارة:
 
                     <br><br>
 
-                    <strong>
+                    <span dir="ltr">
                         3(x + 4)
-                    </strong>
+                    </span>
 
-                </p>
+                </div>
 
-                <button
-                    class="answer-button"
-                    onclick="showAnswer('answer1')">
-
-                    إظهار الحل
-
-                </button>
-
-                <div
+                <input
+                    type="text"
                     id="answer1"
-                    class="answer">
+                    class="answer-input"
+                    placeholder="اكتب إجابتك هنا..."
+                    dir="ltr"
+                >
 
-                    3(x + 4) = 3x + 12
+                <button
+                    class="check-button"
+                    onclick="checkAnswer(1)">
+
+                    تحقق من الإجابة
+
+                </button>
+
+                <div
+                    id="result1"
+                    class="result">
 
                 </div>
 
             </div>
 
 
+            <!-- التمرين 2 -->
+
             <div class="exercise">
 
-                <p>
+                <div class="exercise-number">
+                    2
+                </div>
 
-                    <strong>
-                        التمرين 2:
-                    </strong>
+                <div class="question">
 
-                    انشر:
+                    انشر العبارة:
 
                     <br><br>
 
-                    <strong>
+                    <span dir="ltr">
                         2(x - 5)
-                    </strong>
+                    </span>
 
-                </p>
+                </div>
 
-                <button
-                    class="answer-button"
-                    onclick="showAnswer('answer2')">
-
-                    إظهار الحل
-
-                </button>
-
-                <div
+                <input
+                    type="text"
                     id="answer2"
-                    class="answer">
+                    class="answer-input"
+                    placeholder="اكتب إجابتك هنا..."
+                    dir="ltr"
+                >
 
-                    2(x - 5) = 2x - 10
+                <button
+                    class="check-button"
+                    onclick="checkAnswer(2)">
+
+                    تحقق من الإجابة
+
+                </button>
+
+                <div
+                    id="result2"
+                    class="result">
 
                 </div>
 
             </div>
 
 
+            <!-- التمرين 3 -->
+
             <div class="exercise">
 
-                <p>
+                <div class="exercise-number">
+                    3
+                </div>
 
-                    <strong>
-                        التمرين 3:
-                    </strong>
+                <div class="question">
 
-                    حلّل:
+                    حلّل العبارة:
 
                     <br><br>
 
-                    <strong>
+                    <span dir="ltr">
                         4x + 12
-                    </strong>
+                    </span>
 
-                </p>
+                </div>
+
+                <input
+                    type="text"
+                    id="answer3"
+                    class="answer-input"
+                    placeholder="اكتب إجابتك هنا..."
+                    dir="ltr"
+                >
 
                 <button
-                    class="answer-button"
-                    onclick="showAnswer('answer3')">
+                    class="check-button"
+                    onclick="checkAnswer(3)">
 
-                    إظهار الحل
+                    تحقق من الإجابة
 
                 </button>
 
                 <div
-                    id="answer3"
-                    class="answer">
-
-                    4x + 12 = 4(x + 3)
+                    id="result3"
+                    class="result">
 
                 </div>
 
             </div>
 
 
+            <!-- التمرين 4 -->
+
             <div class="exercise">
 
-                <p>
+                <div class="exercise-number">
+                    4
+                </div>
 
-                    <strong>
-                        التمرين 4:
-                    </strong>
+                <div class="question">
 
-                    انشر:
+                    انشر وبسّط:
 
                     <br><br>
 
-                    <strong>
+                    <span dir="ltr">
                         (x + 2)(x + 5)
-                    </strong>
+                    </span>
 
-                </p>
+                </div>
+
+                <input
+                    type="text"
+                    id="answer4"
+                    class="answer-input"
+                    placeholder="اكتب إجابتك هنا..."
+                    dir="ltr"
+                >
 
                 <button
-                    class="answer-button"
-                    onclick="showAnswer('answer4')">
+                    class="check-button"
+                    onclick="checkAnswer(4)">
 
-                    إظهار الحل
+                    تحقق من الإجابة
 
                 </button>
 
                 <div
-                    id="answer4"
-                    class="answer">
-
-                    (x + 2)(x + 5)
-                    = x² + 7x + 10
+                    id="result4"
+                    class="result">
 
                 </div>
+
+            </div>
+
+
+            <!-- التمرين 5 -->
+
+            <div class="exercise">
+
+                <div class="exercise-number">
+                    5
+                </div>
+
+                <div class="question">
+
+                    حلّل العبارة:
+
+                    <br><br>
+
+                    <span dir="ltr">
+                        5x + 15
+                    </span>
+
+                </div>
+
+                <input
+                    type="text"
+                    id="answer5"
+                    class="answer-input"
+                    placeholder="اكتب إجابتك هنا..."
+                    dir="ltr"
+                >
+
+                <button
+                    class="check-button"
+                    onclick="checkAnswer(5)">
+
+                    تحقق من الإجابة
+
+                </button>
+
+                <div
+                    id="result5"
+                    class="result">
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="savedStatus"
+                class="saved-status">
+
+                📊 لم تجب عن أي تمرين بعد.
 
             </div>
 
@@ -833,6 +901,10 @@
 
 
     <script>
+
+        /* =========================
+           الوضع الليلي
+           ========================= */
 
         const themeButton =
             document.getElementById("themeButton");
@@ -882,25 +954,313 @@
         );
 
 
-        function showAnswer(id) {
+        /* =========================
+           إجابات التمارين
+           ========================= */
 
-            const answer =
-                document.getElementById(id);
+        const correctAnswers = {
 
-            if (answer.style.display === "block") {
+            1: [
+                "3x+12",
+                "12+3x",
+                "3x + 12"
+            ],
 
-                answer.style.display = "none";
+            2: [
+                "2x-10",
+                "2x - 10",
+                "-10+2x"
+            ],
 
-            } else {
+            3: [
+                "4(x+3)",
+                "4(x + 3)"
+            ],
 
-                answer.style.display = "block";
+            4: [
+                "x²+7x+10",
+                "x² + 7x + 10",
+                "x^2+7x+10",
+                "x^2 + 7x + 10"
+            ],
+
+            5: [
+                "5(x+3)",
+                "5(x + 3)"
+            ]
+
+        };
+
+
+        /*
+         * تنظيف الإجابة قبل المقارنة
+         */
+
+        function normalizeAnswer(answer) {
+
+            return answer
+                .trim()
+                .toLowerCase()
+                .replace(/\s+/g, "")
+                .replace(/−/g, "-")
+                .replace(/×/g, "")
+                .replace(/²/g, "^2");
+
+        }
+
+
+        /*
+         * التحقق من الإجابة
+         */
+
+        function checkAnswer(number) {
+
+            const input =
+                document.getElementById(
+                    "answer" + number
+                );
+
+            const result =
+                document.getElementById(
+                    "result" + number
+                );
+
+
+            const userAnswer =
+                normalizeAnswer(input.value);
+
+
+            if (!userAnswer) {
+
+                result.className = "result wrong";
+
+                result.textContent =
+                    "⚠️ اكتب إجابتك أولًا.";
+
+                return;
 
             }
+
+
+            const isCorrect =
+                correctAnswers[number]
+                    .some(
+                        answer =>
+                            normalizeAnswer(answer)
+                            === userAnswer
+                    );
+
+
+            /*
+             * تحميل النتائج القديمة
+             */
+
+            let progress =
+                JSON.parse(
+                    localStorage.getItem(
+                        "studyhub_math_exercises"
+                    )
+                ) || {};
+
+
+            /*
+             * إذا كانت الإجابة صحيحة
+             */
+
+            if (isCorrect) {
+
+                result.className =
+                    "result correct";
+
+                result.textContent =
+                    "✅ إجابة صحيحة! تم حفظ التمرين كمُنجز.";
+
+                progress[number] = {
+                    status: "correct",
+                    answer: input.value,
+                    date: new Date().toISOString()
+                };
+
+            }
+
+
+            /*
+             * إذا كانت الإجابة خاطئة
+             */
+
+            else {
+
+                result.className =
+                    "result wrong";
+
+                result.textContent =
+                    "❌ إجابة خاطئة. تم حفظها كمحاولة خاطئة.";
+
+                progress[number] = {
+                    status: "wrong",
+                    answer: input.value,
+                    date: new Date().toISOString()
+                };
+
+            }
+
+
+            /*
+             * حفظ النتيجة
+             */
+
+            localStorage.setItem(
+                "studyhub_math_exercises",
+                JSON.stringify(progress)
+            );
+
+
+            updateSavedStatus();
+
+        }
+
+
+        /*
+         * عرض عدد الإجابات الصحيحة والخاطئة
+         */
+
+        function updateSavedStatus() {
+
+            const progress =
+                JSON.parse(
+                    localStorage.getItem(
+                        "studyhub_math_exercises"
+                    )
+                ) || {};
+
+
+            let correct = 0;
+            let wrong = 0;
+
+
+            Object.values(progress).forEach(
+                item => {
+
+                    if (item.status === "correct") {
+                        correct++;
+                    }
+
+                    if (item.status === "wrong") {
+                        wrong++;
+                    }
+
+                }
+            );
+
+
+            const total =
+                correct + wrong;
+
+
+            const savedStatus =
+                document.getElementById(
+                    "savedStatus"
+                );
+
+
+            if (total === 0) {
+
+                savedStatus.textContent =
+                    "📊 لم تجب عن أي تمرين بعد.";
+
+                return;
+
+            }
+
+
+            savedStatus.innerHTML =
+                "📊 النتائج المحفوظة: " +
+                "<strong>" +
+                correct +
+                "</strong> صحيحة — " +
+                "<strong>" +
+                wrong +
+                "</strong> خاطئة";
+
+
+        }
+
+
+        /*
+         * استرجاع الإجابات المحفوظة
+         */
+
+        function loadSavedAnswers() {
+
+            const progress =
+                JSON.parse(
+                    localStorage.getItem(
+                        "studyhub_math_exercises"
+                    )
+                ) || {};
+
+
+            Object.keys(progress).forEach(
+                number => {
+
+                    const item =
+                        progress[number];
+
+
+                    const input =
+                        document.getElementById(
+                            "answer" + number
+                        );
+
+
+                    const result =
+                        document.getElementById(
+                            "result" + number
+                        );
+
+
+                    if (!input || !result) {
+                        return;
+                    }
+
+
+                    input.value =
+                        item.answer || "";
+
+
+                    if (item.status === "correct") {
+
+                        result.className =
+                            "result correct";
+
+                        result.textContent =
+                            "✅ إجابة صحيحة — محفوظة كمُنجزة.";
+
+                    }
+
+
+                    if (item.status === "wrong") {
+
+                        result.className =
+                            "result wrong";
+
+                        result.textContent =
+                            "❌ هذه الإجابة محفوظة كمحاولة خاطئة.";
+
+                    }
+
+                }
+            );
+
+
+            updateSavedStatus();
 
         }
 
 
         updateTheme();
+
+        loadSavedAnswers();
 
     </script>
 
