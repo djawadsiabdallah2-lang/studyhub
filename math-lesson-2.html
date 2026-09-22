@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>المجالات | StudyHub</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .lesson-page {
+            width: min(1000px, 92%);
+            margin: auto;
+            padding: 50px 0 80px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: #93c5fd;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        .lesson-header {
+            padding: 35px;
+            margin-bottom: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(79, 140, 255, 0.14),
+                    rgba(124, 92, 255, 0.08)
+                ),
+                var(--card);
+
+            border: 1px solid var(--border);
+            border-radius: 25px;
+        }
+
+        .lesson-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .lesson-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 8px;
+        }
+
+        .lesson-header p {
+            color: var(--text-muted);
+        }
+
+        .lesson-card {
+            padding: 28px;
+            margin-bottom: 22px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+            border-radius: 20px;
+        }
+
+        .lesson-card h2 {
+            margin-bottom: 15px;
+            color: #93c5fd;
+        }
+
+        .lesson-card p {
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .info-box {
+            padding: 18px;
+            margin: 15px 0;
+
+            background: rgba(79, 140, 255, 0.08);
+
+            border-right: 4px solid #4f8cff;
+            border-radius: 10px;
+
+            color: var(--text-light);
+        }
+
+        .math-box {
+            padding: 18px;
+            margin: 15px 0;
+
+            background: #101820;
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            text-align: center;
+
+            font-size: 1.2rem;
+            font-weight: bold;
+            direction: ltr;
+        }
+
+        .examples {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .example {
+            padding: 20px;
+
+            background: #101820;
+
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .example h3 {
+            color: #93c5fd;
+            margin-bottom: 10px;
+        }
+
+        .exercise {
+            padding: 20px;
+            margin-top: 15px;
+
+            background: #101820;
+
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .exercise p {
+            margin-bottom: 15px;
+        }
+
+        .answer-button {
+            padding: 10px 18px;
+
+            border: none;
+            border-radius: 9px;
+
+            background: #4f8cff;
+            color: white;
+
+            cursor: pointer;
+
+            font-weight: 700;
+        }
+
+        .answer-button:hover {
+            opacity: 0.9;
+        }
+
+        .answer {
+            display: none;
+
+            margin-top: 15px;
+            padding: 12px;
+
+            background: rgba(34, 197, 94, 0.1);
+
+            border-right: 4px solid #22c55e;
+            border-radius: 8px;
+
+            color: #8ff0ad;
+        }
+
+        .tip {
+            padding: 18px;
+
+            background: rgba(245, 158, 11, 0.08);
+
+            border-right: 4px solid #f59e0b;
+            border-radius: 10px;
+
+            color: var(--text-light);
+        }
+
+        @media (max-width: 700px) {
+
+            .lesson-header,
+            .lesson-card {
+                padding: 22px;
+            }
+
+            .examples {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- الشريط العلوي -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            📚 StudyHub
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                الرئيسية
+            </a>
+
+            <a
+                href="math.html"
+                class="active">
+                الرياضيات
+            </a>
+
+        </nav>
+
+        <button
+            id="themeButton"
+            class="theme-button"
+            aria-label="تغيير المظهر">
+            🌙
+        </button>
+
+    </header>
+
+
+    <main class="lesson-page">
+
+
+        <!-- العودة -->
+
+        <a
+            href="math.html"
+            class="back-link">
+
+            ← العودة إلى دروس الرياضيات
+
+        </a>
+
+
+        <!-- رأس الدرس -->
+
+        <section class="lesson-header">
+
+            <div class="lesson-icon">
+                📏
+            </div>
+
+            <h1>
+                المجالات
+            </h1>
+
+            <p>
+                الرياضيات — السنة الأولى ثانوي
+            </p>
+
+        </section>
+
+
+        <!-- المقدمة -->
+
+        <section class="lesson-card">
+
+            <h2>
+                📚 ما هو المجال؟
+            </h2>
+
+            <p>
+                المجال هو مجموعة من الأعداد الحقيقية التي تقع بين
+                حدّين معينين، وقد تكون الحدود داخلة في المجال أو غير داخلة فيه.
+            </p>
+
+            <div class="info-box">
+
+                نستعمل المجالات كثيرًا لكتابة مجموعة من القيم
+                التي تحقق شرطًا معينًا.
+
+            </div>
+
+        </section>
+
+
+        <!-- أنواع المجالات -->
+
+        <section class="lesson-card">
+
+            <h2>
+                🔢 أنواع المجالات
+            </h2>
+
+
+            <div class="examples">
+
+
+                <div class="example">
+
+                    <h3>
+                        المجال المغلق
+                    </h3>
+
+                    <p>
+                        عندما يكون الطرفان داخل المجال:
+                    </p>
+
+                    <div class="math-box">
+                        [a ; b]
+                    </div>
+
+                    <p>
+                        يعني:
+                    </p>
+
+                    <div class="math-box">
+                        a ≤ x ≤ b
+                    </div>
+
+                </div>
+
+
+                <div class="example">
+
+                    <h3>
+                        المجال المفتوح
+                    </h3>
+
+                    <p>
+                        عندما لا يكون الطرفان داخل المجال:
+                    </p>
+
+                    <div class="math-box">
+                        ]a ; b[
+                    </div>
+
+                    <p>
+                        يعني:
+                    </p>
+
+                    <div class="math-box">
+                        a &lt; x &lt; b
+                    </div>
+
+                </div>
+
+
+                <div class="example">
+
+                    <h3>
+                        مجال مغلق من اليسار
+                    </h3>
+
+                    <div class="math-box">
+                        [a ; b[
+                    </div>
+
+                    <p>
+                        يعني:
+                    </p>
+
+                    <div class="math-box">
+                        a ≤ x &lt; b
+                    </div>
+
+                </div>
+
+
+                <div class="example">
+
+                    <h3>
+                        مجال مغلق من اليمين
+                    </h3>
+
+                    <div class="math-box">
+                        ]a ; b]
+                    </div>
+
+                    <p>
+                        يعني:
+                    </p>
+
+                    <div class="math-box">
+                        a &lt; x ≤ b
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- أمثلة -->
+
+        <section class="lesson-card">
+
+            <h2>
+                💡 أمثلة محلولة
+            </h2>
+
+
+            <div class="info-box">
+
+                <strong>
+                    مثال 1:
+                </strong>
+
+                <br><br>
+
+                لدينا:
+
+                <div class="math-box">
+                    x ∈ [2 ; 7]
+                </div>
+
+                هذا يعني:
+
+                <div class="math-box">
+                    2 ≤ x ≤ 7
+                </div>
+
+                أي أن العدد x أكبر من أو يساوي 2،
+                وأصغر من أو يساوي 7.
+
+            </div>
+
+
+            <div class="info-box">
+
+                <strong>
+                    مثال 2:
+                </strong>
+
+                <br><br>
+
+                لدينا:
+
+                <div class="math-box">
+                    x ∈ ]-3 ; 5[
+                </div>
+
+                هذا يعني:
+
+                <div class="math-box">
+                    -3 &lt; x &lt; 5
+                </div>
+
+                أي أن -3 و 5 غير داخلين في المجال.
+
+            </div>
+
+
+            <div class="info-box">
+
+                <strong>
+                    مثال 3:
+                </strong>
+
+                <br><br>
+
+                لدينا:
+
+                <div class="math-box">
+                    x ∈ [1 ; 6[
+                </div>
+
+                إذن:
+
+                <div class="math-box">
+                    1 ≤ x &lt; 6
+                </div>
+
+                العدد 1 داخل المجال، أما 6 فليس داخله.
+
+            </div>
+
+        </section>
+
+
+        <!-- المجالات غير المحدودة -->
+
+        <section class="lesson-card">
+
+            <h2>
+                ♾️ المجالات غير المحدودة
+            </h2>
+
+            <p>
+                يمكن أن يمتد المجال نحو ما لا نهاية.
+            </p>
+
+
+            <div class="examples">
+
+
+                <div class="example">
+
+                    <h3>
+                        أكبر من a
+                    </h3>
+
+                    <div class="math-box">
+                        ]a ; +∞[
+                    </div>
+
+                    <p>
+                        أي:
+                    </p>
+
+                    <div class="math-box">
+                        x &gt; a
+                    </div>
+
+                </div>
+
+
+                <div class="example">
+
+                    <h3>
+                        أكبر من أو يساوي a
+                    </h3>
+
+                    <div class="math-box">
+                        [a ; +∞[
+                    </div>
+
+                    <p>
+                        أي:
+                    </p>
+
+                    <div class="math-box">
+                        x ≥ a
+                    </div>
+
+                </div>
+
+
+                <div class="example">
+
+                    <h3>
+                        أصغر من a
+                    </h3>
+
+                    <div class="math-box">
+                        ]-∞ ; a[
+                    </div>
+
+                    <p>
+                        أي:
+                    </p>
+
+                    <div class="math-box">
+                        x &lt; a
+                    </div>
+
+                </div>
+
+
+                <div class="example">
+
+                    <h3>
+                        أصغر من أو يساوي a
+                    </h3>
+
+                    <div class="math-box">
+                        ]-∞ ; a]
+                    </div>
+
+                    <p>
+                        أي:
+                    </p>
+
+                    <div class="math-box">
+                        x ≤ a
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- نصيحة -->
+
+        <section class="lesson-card">
+
+            <h2>
+                🧠 كيف أميز المجال؟
+            </h2>
+
+            <div class="tip">
+
+                <strong>
+                    تذكر:
+                </strong>
+
+                <br><br>
+
+                <strong>[</strong>
+                أو
+                <strong>]</strong>
+                عند الطرف تعني أن العدد داخل المجال.
+
+                <br><br>
+
+                أما الطرف المفتوح مثل:
+
+                <strong>]</strong>
+                أو
+                <strong>[</strong>
+
+                فيدل على أن العدد غير داخل المجال.
+
+                <br><br>
+
+                وعند
+                <strong>+∞</strong>
+                و
+                <strong>-∞</strong>
+                نستعمل دائمًا طرفًا مفتوحًا.
+
+            </div>
+
+        </section>
+
+
+        <!-- التمارين -->
+
+        <section class="lesson-card">
+
+            <h2>
+                ✏️ تمارين تفاعلية
+            </h2>
+
+
+            <div class="exercise">
+
+                <p>
+                    <strong>
+                        التمرين 1:
+                    </strong>
+
+                    اكتب المتراجحة التي تمثل المجال:
+
+                    <br><br>
+
+                    <strong>
+                        x ∈ [3 ; 8]
+                    </strong>
+                </p>
+
+                <button
+                    class="answer-button"
+                    onclick="showAnswer('answer1')">
+
+                    إظهار الحل
+
+                </button>
+
+                <div
+                    id="answer1"
+                    class="answer">
+
+                    3 ≤ x ≤ 8
+
+                </div>
+
+            </div>
+
+
+            <div class="exercise">
+
+                <p>
+                    <strong>
+                        التمرين 2:
+                    </strong>
+
+                    اكتب المجال الذي يمثل:
+
+                    <br><br>
+
+                    <strong>
+                        -2 &lt; x ≤ 5
+                    </strong>
+                </p>
+
+                <button
+                    class="answer-button"
+                    onclick="showAnswer('answer2')">
+
+                    إظهار الحل
+
+                </button>
+
+                <div
+                    id="answer2"
+                    class="answer">
+
+                    x ∈ ]-2 ; 5]
+
+                </div>
+
+            </div>
+
+
+            <div class="exercise">
+
+                <p>
+                    <strong>
+                        التمرين 3:
+                    </strong>
+
+                    هل العدد 4 ينتمي إلى المجال:
+
+                    <br><br>
+
+                    <strong>
+                        ]1 ; 4[
+                    </strong>
+
+                </p>
+
+                <button
+                    class="answer-button"
+                    onclick="showAnswer('answer3')">
+
+                    إظهار الحل
+
+                </button>
+
+                <div
+                    id="answer3"
+                    class="answer">
+
+                    لا، لأن المجال مفتوح عند 4.
+
+                </div>
+
+            </div>
+
+
+            <div class="exercise">
+
+                <p>
+                    <strong>
+                        التمرين 4:
+                    </strong>
+
+                    اكتب المجال الذي يمثل:
+
+                    <br><br>
+
+                    <strong>
+                        x ≥ 2
+                    </strong>
+
+                </p>
+
+                <button
+                    class="answer-button"
+                    onclick="showAnswer('answer4')">
+
+                    إظهار الحل
+
+                </button>
+
+                <div
+                    id="answer4"
+                    class="answer">
+
+                    x ∈ [2 ; +∞[
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-logo">
+            📚 StudyHub
+        </div>
+
+        <p>
+            منصتك الشخصية لتنظيم الدراسة وتحقيق أهدافك.
+        </p>
+
+        <span>
+            © 2026 StudyHub
+        </span>
+
+    </footer>
+
+
+    <script>
+
+        const themeButton =
+            document.getElementById("themeButton");
+
+
+        let darkMode =
+            localStorage.getItem("studyhub_theme") !== "light";
+
+
+        function updateTheme() {
+
+            if (darkMode) {
+
+                document.body.classList.remove(
+                    "light-mode"
+                );
+
+                themeButton.textContent = "☀️";
+
+            } else {
+
+                document.body.classList.add(
+                    "light-mode"
+                );
+
+                themeButton.textContent = "🌙";
+
+            }
+
+        }
+
+
+        themeButton.addEventListener(
+            "click",
+            () => {
+
+                darkMode = !darkMode;
+
+                localStorage.setItem(
+                    "studyhub_theme",
+                    darkMode ? "dark" : "light"
+                );
+
+                updateTheme();
+
+            }
+        );
+
+
+        function showAnswer(id) {
+
+            const answer =
+                document.getElementById(id);
+
+            if (answer.style.display === "block") {
+
+                answer.style.display = "none";
+
+            } else {
+
+                answer.style.display = "block";
+
+            }
+
+        }
+
+
+        updateTheme();
+
+    </script>
+
+
+</body>
+
+</html>
+
