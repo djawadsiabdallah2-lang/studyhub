@@ -194,11 +194,14 @@
             font-weight: 700;
 
             white-space: nowrap;
+
+            transition: 0.2s ease;
         }
 
         .lesson-button:hover {
             background: rgba(79, 140, 255, 0.17);
             color: white;
+            transform: translateY(-2px);
         }
 
         .subject-progress {
@@ -255,7 +258,9 @@
 <body>
 
 
-    <!-- الشريط العلوي -->
+    <!-- ==============================
+         الشريط العلوي
+         ============================== -->
 
     <header class="navbar">
 
@@ -269,8 +274,9 @@
                 الرئيسية
             </a>
 
-            <a href="index.html#subjects"
-               class="active">
+            <a
+                href="index.html#subjects"
+                class="active">
                 المواد
             </a>
 
@@ -290,14 +296,17 @@
 
         <button
             id="themeButton"
-            class="theme-button">
+            class="theme-button"
+            aria-label="تغيير المظهر">
             🌙
         </button>
 
     </header>
 
 
-    <!-- رأس المادة -->
+    <!-- ==============================
+         رأس المادة
+         ============================== -->
 
     <section class="subject-header">
 
@@ -329,12 +338,16 @@
     </section>
 
 
-    <!-- الدروس -->
+    <!-- ==============================
+         الدروس
+         ============================== -->
 
     <main class="lessons-section">
 
 
-        <!-- الوحدة الأولى -->
+        <!-- ==============================
+             الوحدة الأولى
+             ============================== -->
 
         <div class="unit">
 
@@ -353,6 +366,8 @@
 
             <div class="lesson-list">
 
+
+                <!-- الدرس 01 -->
 
                 <div class="lesson">
 
@@ -377,8 +392,10 @@
                     </div>
 
 
+                    <!-- تم ربط الدرس الحقيقي -->
+
                     <a
-                        href="#"
+                        href="math-lesson-1.html"
                         class="lesson-button">
 
                         فتح الدرس →
@@ -387,6 +404,8 @@
 
                 </div>
 
+
+                <!-- الدرس 02 -->
 
                 <div class="lesson">
 
@@ -421,6 +440,8 @@
 
                 </div>
 
+
+                <!-- الدرس 03 -->
 
                 <div class="lesson">
 
@@ -461,7 +482,9 @@
         </div>
 
 
-        <!-- الوحدة الثانية -->
+        <!-- ==============================
+             الوحدة الثانية
+             ============================== -->
 
         <div class="unit">
 
@@ -480,6 +503,8 @@
 
             <div class="lesson-list">
 
+
+                <!-- الدرس 04 -->
 
                 <div class="lesson">
 
@@ -515,6 +540,8 @@
                 </div>
 
 
+                <!-- الدرس 05 -->
+
                 <div class="lesson">
 
                     <div class="lesson-info">
@@ -548,6 +575,8 @@
 
                 </div>
 
+
+                <!-- الدرس 06 -->
 
                 <div class="lesson">
 
@@ -588,7 +617,9 @@
         </div>
 
 
-        <!-- الوحدة الثالثة -->
+        <!-- ==============================
+             الوحدة الثالثة
+             ============================== -->
 
         <div class="unit">
 
@@ -607,6 +638,8 @@
 
             <div class="lesson-list">
 
+
+                <!-- الدرس 07 -->
 
                 <div class="lesson">
 
@@ -642,12 +675,18 @@
                 </div>
 
 
+                <!-- الدرس 08 -->
+
                 <div class="lesson">
 
                     <div class="lesson-info">
 
-                        <div class="lesson-number">
-                            08
+                        <div>
+
+                            <div class="lesson-number">
+                                08
+                            </div>
+
                         </div>
 
                         <div>
@@ -681,7 +720,9 @@
         </div>
 
 
-        <!-- تقدم المادة -->
+        <!-- ==============================
+             تقدم المادة
+             ============================== -->
 
         <div class="subject-progress">
 
@@ -723,7 +764,9 @@
     </main>
 
 
-    <!-- التذييل -->
+    <!-- ==============================
+         التذييل
+         ============================== -->
 
     <footer>
 
@@ -742,22 +785,18 @@
     </footer>
 
 
+    <!-- ==============================
+         JavaScript
+         ============================== -->
+
     <script>
 
-        /* =====================================
-           الوضع الليلي / الفاتح
-           ===================================== */
-
         const themeButton =
-            document.getElementById(
-                "themeButton"
-            );
+            document.getElementById("themeButton");
 
 
         let darkMode =
-            localStorage.getItem(
-                "studyhub_theme"
-            ) !== "light";
+            localStorage.getItem("studyhub_theme") !== "light";
 
 
         function updateTheme() {
@@ -791,9 +830,7 @@
 
                 localStorage.setItem(
                     "studyhub_theme",
-                    darkMode
-                        ? "dark"
-                        : "light"
+                    darkMode ? "dark" : "light"
                 );
 
                 updateTheme();
