@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>الرياضيات | StudyHub</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .subject-header {
+            width: min(1180px, 90%);
+            margin: 0 auto;
+            padding: 70px 0 40px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-bottom: 25px;
+
+            color: #93c5fd;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        .subject-title {
+            padding: 35px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(79, 140, 255, 0.14),
+                    rgba(124, 92, 255, 0.08)
+                ),
+                var(--card);
+
+            border: 1px solid var(--border);
+            border-radius: 25px;
+        }
+
+        .subject-title-icon {
+            width: 70px;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 20px;
+
+            background: rgba(79, 140, 255, 0.12);
+
+            border-radius: 20px;
+
+            font-size: 2.2rem;
+        }
+
+        .subject-title h1 {
+            margin-bottom: 8px;
+
+            font-size: clamp(2rem, 5vw, 3.2rem);
+        }
+
+        .subject-title p {
+            color: var(--text-muted);
+        }
+
+        .lessons-section {
+            width: min(1180px, 90%);
+            margin: 0 auto;
+            padding: 30px 0 80px;
+        }
+
+        .unit {
+            margin-bottom: 25px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .unit-header {
+            padding: 22px 25px;
+
+            background: rgba(79, 140, 255, 0.07);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .unit-header h2 {
+            margin-bottom: 4px;
+
+            font-size: 1.3rem;
+        }
+
+        .unit-header p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .lesson-list {
+            padding: 10px;
+        }
+
+        .lesson {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 18px;
+
+            border-radius: 14px;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .lesson:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateX(-3px);
+        }
+
+        .lesson-info {
+            display: flex;
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        .lesson-number {
+            width: 42px;
+            height: 42px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(79, 140, 255, 0.12);
+
+            color: #93c5fd;
+
+            border-radius: 12px;
+
+            font-weight: 800;
+        }
+
+        .lesson-info h3 {
+            margin-bottom: 3px;
+
+            font-size: 1rem;
+        }
+
+        .lesson-info p {
+            color: var(--text-muted);
+
+            font-size: 0.82rem;
+        }
+
+        .lesson-button {
+            padding: 9px 15px;
+
+            border: 1px solid rgba(79, 140, 255, 0.2);
+            border-radius: 10px;
+
+            background: rgba(79, 140, 255, 0.08);
+
+            color: #93c5fd;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+        .lesson-button:hover {
+            background: rgba(79, 140, 255, 0.17);
+            color: white;
+        }
+
+        .subject-progress {
+            margin-top: 25px;
+
+            padding: 25px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+            border-radius: 20px;
+        }
+
+        .subject-progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 15px;
+        }
+
+        .subject-progress-header span {
+            color: var(--text-muted);
+        }
+
+        .subject-progress-header strong {
+            color: #93c5fd;
+            font-size: 1.4rem;
+        }
+
+        @media (max-width: 600px) {
+
+            .subject-title {
+                padding: 25px;
+            }
+
+            .lesson {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .lesson-button {
+                width: 100%;
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- الشريط العلوي -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            📚 StudyHub
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                الرئيسية
+            </a>
+
+            <a href="index.html#subjects"
+               class="active">
+                المواد
+            </a>
+
+            <a href="index.html#tasks">
+                المهام
+            </a>
+
+            <a href="index.html#timer">
+                المؤقت
+            </a>
+
+            <a href="index.html#progress">
+                تقدمي
+            </a>
+
+        </nav>
+
+        <button
+            id="themeButton"
+            class="theme-button">
+            🌙
+        </button>
+
+    </header>
+
+
+    <!-- رأس المادة -->
+
+    <section class="subject-header">
+
+        <a
+            href="index.html#subjects"
+            class="back-link">
+
+            ← العودة إلى المواد
+
+        </a>
+
+
+        <div class="subject-title">
+
+            <div class="subject-title-icon">
+                📐
+            </div>
+
+            <h1>
+                الرياضيات
+            </h1>
+
+            <p>
+                السنة الأولى ثانوي — جذع مشترك
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- الدروس -->
+
+    <main class="lessons-section">
+
+
+        <!-- الوحدة الأولى -->
+
+        <div class="unit">
+
+            <div class="unit-header">
+
+                <h2>
+                    📘 الوحدة الأولى
+                </h2>
+
+                <p>
+                    الأعداد والحساب
+                </p>
+
+            </div>
+
+
+            <div class="lesson-list">
+
+
+                <div class="lesson">
+
+                    <div class="lesson-info">
+
+                        <div class="lesson-number">
+                            01
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                مجموعات الأعداد
+                            </h3>
+
+                            <p>
+                                التعرف على مختلف مجموعات الأعداد
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="lesson-button">
+
+                        فتح الدرس →
+
+                    </a>
+
+                </div>
+
+
+                <div class="lesson">
+
+                    <div class="lesson-info">
+
+                        <div class="lesson-number">
+                            02
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                المجالات
+                            </h3>
+
+                            <p>
+                                تمثيل المجالات وكتابتها
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="lesson-button">
+
+                        فتح الدرس →
+
+                    </a>
+
+                </div>
+
+
+                <div class="lesson">
+
+                    <div class="lesson-info">
+
+                        <div class="lesson-number">
+                            03
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                القيمة المطلقة
+                            </h3>
+
+                            <p>
+                                تعريف القيمة المطلقة وخصائصها
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="lesson-button">
+
+                        فتح الدرس →
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- الوحدة الثانية -->
+
+        <div class="unit">
+
+            <div class="unit-header">
+
+                <h2>
+                    📗 الوحدة الثانية
+                </h2>
+
+                <p>
+                    الحساب الجبري
+                </p>
+
+            </div>
+
+
+            <div class="lesson-list">
+
+
+                <div class="lesson">
+
+                    <div class="lesson-info">
+
+                        <div class="lesson-number">
+                            04
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                النشر والتحليل
+                            </h3>
+
+                            <p>
+                                قواعد النشر والتحليل والتطبيقات
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="lesson-button">
+
+                        فتح الدرس →
+
+                    </a>
+
+                </div>
+
+
+                <div class="lesson">
+
+                    <div class="lesson-info">
+
+                        <div class="lesson-number">
+                            05
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                المتطابقات الشهيرة
+                            </h3>
+
+                            <p>
+                                استعمال المتطابقات في تبسيط العبارات
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="lesson-button">
+
+                        فتح الدرس →
+
+                    </a>
+
+                </div>
+
+
+                <div class="lesson">
+
+                    <div class="lesson-info">
+
+                        <div class="lesson-number">
+                            06
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                المعادلات
+                            </h3>
+
+                            <p>
+                                حل المعادلات من الدرجة الأولى
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="lesson-button">
+
+                        فتح الدرس →
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- الوحدة الثالثة -->
+
+        <div class="unit">
+
+            <div class="unit-header">
+
+                <h2>
+                    📙 الوحدة الثالثة
+                </h2>
+
+                <p>
+                    الدوال
+                </p>
+
+            </div>
+
+
+            <div class="lesson-list">
+
+
+                <div class="lesson">
+
+                    <div class="lesson-info">
+
+                        <div class="lesson-number">
+                            07
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                مفهوم الدالة
+                            </h3>
+
+                            <p>
+                                تعريف الدالة وتمثيلها
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="lesson-button">
+
+                        فتح الدرس →
+
+                    </a>
+
+                </div>
+
+
+                <div class="lesson">
+
+                    <div class="lesson-info">
+
+                        <div class="lesson-number">
+                            08
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                الدوال المرجعية
+                            </h3>
+
+                            <p>
+                                دراسة بعض الدوال الأساسية
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="lesson-button">
+
+                        فتح الدرس →
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- تقدم المادة -->
+
+        <div class="subject-progress">
+
+            <div class="subject-progress-header">
+
+                <div>
+
+                    <strong>
+                        📊 تقدمك في الرياضيات
+                    </strong>
+
+                    <br>
+
+                    <span>
+                        أكمل الدروس لتطوير نسبة تقدمك.
+                    </span>
+
+                </div>
+
+                <strong>
+                    0%
+                </strong>
+
+            </div>
+
+
+            <div class="large-progress-bar">
+
+                <div
+                    class="large-progress-fill"
+                    style="width: 0%;">
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- التذييل -->
+
+    <footer>
+
+        <div class="footer-logo">
+            📚 StudyHub
+        </div>
+
+        <p>
+            منصتك الشخصية لتنظيم الدراسة وتحقيق أهدافك.
+        </p>
+
+        <span>
+            © 2026 StudyHub
+        </span>
+
+    </footer>
+
+
+    <script>
+
+        /* =====================================
+           الوضع الليلي / الفاتح
+           ===================================== */
+
+        const themeButton =
+            document.getElementById(
+                "themeButton"
+            );
+
+
+        let darkMode =
+            localStorage.getItem(
+                "studyhub_theme"
+            ) !== "light";
+
+
+        function updateTheme() {
+
+            if (darkMode) {
+
+                document.body.classList.remove(
+                    "light-mode"
+                );
+
+                themeButton.textContent = "☀️";
+
+            } else {
+
+                document.body.classList.add(
+                    "light-mode"
+                );
+
+                themeButton.textContent = "🌙";
+
+            }
+
+        }
+
+
+        themeButton.addEventListener(
+            "click",
+            () => {
+
+                darkMode = !darkMode;
+
+                localStorage.setItem(
+                    "studyhub_theme",
+                    darkMode
+                        ? "dark"
+                        : "light"
+                );
+
+                updateTheme();
+
+            }
+        );
+
+
+        updateTheme();
+
+    </script>
+
+
+</body>
+
+</html>
+
