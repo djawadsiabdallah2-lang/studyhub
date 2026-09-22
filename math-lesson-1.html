@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>مجموعات الأعداد | StudyHub</title>
+
+    <style>
+        :root {
+            --background: #101820;
+            --card: #182631;
+            --card-hover: #203442;
+            --border: #2b4252;
+            --primary: #00a8ff;
+            --text: #ffffff;
+            --text-light: #d9e4ea;
+            --text-muted: #9fb0bb;
+            --success: #22c55e;
+            --warning: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Tahoma, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(27, 38, 59, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 15px 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .container {
+            width: min(1000px, 92%);
+            margin: auto;
+            padding: 40px 0 70px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .lesson-header {
+            background: linear-gradient(135deg, #182631, #203442);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 25px;
+        }
+
+        .lesson-header .icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .lesson-header h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .lesson-header p {
+            color: var(--text-muted);
+            font-size: 17px;
+        }
+
+        .lesson-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 22px;
+        }
+
+        .lesson-card h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 25px;
+        }
+
+        .lesson-card h3 {
+            margin: 20px 0 8px;
+            color: var(--text);
+        }
+
+        .lesson-card p {
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .number-box {
+            background: #101820;
+            border-right: 4px solid var(--primary);
+            padding: 18px;
+            border-radius: 10px;
+            margin: 15px 0;
+            color: var(--text-light);
+        }
+
+        .example {
+            background: rgba(0, 168, 255, 0.08);
+            border: 1px solid rgba(0, 168, 255, 0.3);
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 15px;
+        }
+
+        .example strong {
+            color: var(--primary);
+        }
+
+        .sets {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .set-card {
+            background: #101820;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .set-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .exercise {
+            background: #101820;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .exercise p {
+            margin-bottom: 12px;
+        }
+
+        .answer-button {
+            border: none;
+            background: var(--primary);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 5px;
+        }
+
+        .answer {
+            display: none;
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            background: rgba(34, 197, 94, 0.12);
+            color: #8ff0ad;
+        }
+
+        .tip {
+            border-right: 4px solid var(--warning);
+            background: rgba(245, 158, 11, 0.08);
+            padding: 18px;
+            border-radius: 10px;
+            color: var(--text-light);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 700px) {
+            .nav-container {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .lesson-header h1 {
+                font-size: 27px;
+            }
+
+            .sets {
+                grid-template-columns: 1fr;
+            }
+
+            .lesson-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                StudyHub 🚀
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="math.html">الرياضيات</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <main class="container">
+
+        <a href="math.html" class="back">
+            ← العودة إلى مادة الرياضيات
+        </a>
+
+
+        <section class="lesson-header">
+
+            <div class="icon">📘</div>
+
+            <h1>مجموعات الأعداد</h1>
+
+            <p>
+                الرياضيات — السنة الأولى ثانوي
+            </p>
+
+        </section>
+
+
+        <section class="lesson-card">
+
+            <h2>📚 ما هي مجموعة الأعداد؟</h2>
+
+            <p>
+                الأعداد في الرياضيات لا تنتمي كلها إلى نفس النوع،
+                لذلك نقوم بتقسيمها إلى مجموعات حسب خصائصها.
+            </p>
+
+            <p>
+                من أهم المجموعات التي يجب أن تعرفها:
+                الأعداد الطبيعية، الصحيحة، النسبية، والحقيقية.
+            </p>
+
+        </section>
+
+
+        <section class="lesson-card">
+
+            <h2>🔢 أهم مجموعات الأعداد</h2>
+
+            <div class="sets">
+
+                <div class="set-card">
+
+                    <h3>ℕ الأعداد الطبيعية</h3>
+
+                    <p>
+                        هي الأعداد التي نستخدمها في العد.
+                    </p>
+
+                    <div class="number-box">
+                        ℕ = {0، 1، 2، 3، 4، 5، ...}
+                    </div>
+
+                </div>
+
+
+                <div class="set-card">
+
+                    <h3>ℤ الأعداد الصحيحة</h3>
+
+                    <p>
+                        تشمل الأعداد الطبيعية والأعداد السالبة.
+                    </p>
+
+                    <div class="number-box">
+                        ℤ = {...، -3، -2، -1، 0، 1، 2، 3، ...}
+                    </div>
+
+                </div>
+
+
+                <div class="set-card">
+
+                    <h3>ℚ الأعداد النسبية</h3>
+
+                    <p>
+                        هي الأعداد التي يمكن كتابتها على شكل كسر
+                        حيث البسط والمقام عددان صحيحان والمقام لا يساوي صفرًا.
+                    </p>
+
+                    <div class="number-box">
+                        ℚ = { a / b | a ∈ ℤ و b ∈ ℤ و b ≠ 0 }
+                    </div>
+
+                </div>
+
+
+                <div class="set-card">
+
+                    <h3>ℝ الأعداد الحقيقية</h3>
+
+                    <p>
+                        تشمل الأعداد النسبية وغير النسبية.
+                    </p>
+
+                    <div class="number-box">
+                        ℝ = مجموعة الأعداد الحقيقية
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="lesson-card">
+
+            <h2>🔗 العلاقة بين المجموعات</h2>
+
+            <p>
+                توجد علاقة مهمة بين هذه المجموعات:
+            </p>
+
+            <div class="number-box">
+                ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ
+            </div>
+
+            <p>
+                أي أن كل عدد طبيعي هو عدد صحيح،
+                وكل عدد صحيح هو عدد نسبي،
+                وكل عدد نسبي هو عدد حقيقي.
+            </p>
+
+        </section>
+
+
+        <section class="lesson-card">
+
+            <h2>💡 أمثلة</h2>
+
+            <div class="example">
+
+                <strong>مثال 1:</strong>
+
+                <p>
+                    العدد 5 ينتمي إلى:
+                </p>
+
+                <div class="number-box">
+                    5 ∈ ℕ ، 5 ∈ ℤ ، 5 ∈ ℚ ، 5 ∈ ℝ
+                </div>
+
+            </div>
+
+
+            <div class="example">
+
+                <strong>مثال 2:</strong>
+
+                <p>
+                    العدد -4 ليس عددًا طبيعيًا، لكنه عدد صحيح.
+                </p>
+
+                <div class="number-box">
+                    -4 ∉ ℕ
+                    <br>
+                    -4 ∈ ℤ
+                </div>
+
+            </div>
+
+
+            <div class="example">
+
+                <strong>مثال 3:</strong>
+
+                <p>
+                    العدد 1/2 عدد نسبي لأنه مكتوب على شكل كسر
+                    من عددين صحيحين.
+                </p>
+
+                <div class="number-box">
+                    1/2 ∈ ℚ
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="lesson-card">
+
+            <h2>🧠 تذكّر</h2>
+
+            <div class="tip">
+
+                عندما ترى عددًا، اسأل نفسك:
+
+                <br><br>
+
+                1. هل هو طبيعي؟ → ℕ
+                <br>
+                2. هل هو صحيح؟ → ℤ
+                <br>
+                3. هل يمكن كتابته على شكل كسر؟ → ℚ
+                <br>
+                4. هل هو عدد حقيقي؟ → ℝ
+
+            </div>
+
+        </section>
+
+
+        <section class="lesson-card">
+
+            <h2>✏️ تمارين تفاعلية</h2>
+
+
+            <div class="exercise">
+
+                <p>
+                    <strong>التمرين 1:</strong>
+                    إلى أي مجموعة ينتمي العدد 7؟
+                </p>
+
+                <button class="answer-button"
+                    onclick="showAnswer('answer1')">
+                    إظهار الحل
+                </button>
+
+                <div id="answer1" class="answer">
+                    7 ∈ ℕ، وبالتالي ينتمي أيضًا إلى ℤ و ℚ و ℝ.
+                </div>
+
+            </div>
+
+
+            <div class="exercise">
+
+                <p>
+                    <strong>التمرين 2:</strong>
+                    هل العدد -8 ينتمي إلى ℕ؟
+                </p>
+
+                <button class="answer-button"
+                    onclick="showAnswer('answer2')">
+                    إظهار الحل
+                </button>
+
+                <div id="answer2" class="answer">
+                    لا، لأن الأعداد الطبيعية لا تحتوي على الأعداد السالبة.
+                    لكن -8 ∈ ℤ.
+                </div>
+
+            </div>
+
+
+            <div class="exercise">
+
+                <p>
+                    <strong>التمرين 3:</strong>
+                    هل العدد 3/4 عدد نسبي؟
+                </p>
+
+                <button class="answer-button"
+                    onclick="showAnswer('answer3')">
+                    إظهار الحل
+                </button>
+
+                <div id="answer3" class="answer">
+                    نعم، لأن 3/4 مكتوب على شكل كسر من عددين صحيحين،
+                    والمقام لا يساوي صفرًا.
+                </div>
+
+            </div>
+
+
+            <div class="exercise">
+
+                <p>
+                    <strong>التمرين 4:</strong>
+                    أكمل العلاقة:
+                </p>
+
+                <div class="number-box">
+                    ℕ ⊂ ؟ ⊂ ℚ ⊂ ℝ
+                </div>
+
+                <button class="answer-button"
+                    onclick="showAnswer('answer4')">
+                    إظهار الحل
+                </button>
+
+                <div id="answer4" class="answer">
+                    الإجابة: ℤ
+                    <br>
+                    ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        StudyHub © 2026 — منصة دراستي
+    </footer>
+
+
+    <script>
+        function showAnswer(id) {
+
+            const answer = document.getElementById(id);
+
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+            } else {
+                answer.style.display = "block";
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>
+
